@@ -2,17 +2,15 @@
 
 Module Program
     Sub Main(args As String())
-        Dim num1, num2, result As Integer
+        Dim num As Integer, Pr As Long = 1
 
-        num1 = Console.ReadLine()
-        num2 = Console.ReadLine()
+        Console.WriteLine("Привет, я перемножаю числа! Хочешь что-нибудь умножить?")
 
-        If num1 * num2 <= Int32.MaxValue Then
-            result = num1 * num2
-        Else
-            Console.WriteLine("Переполнение памяти! Расчет выполнен для Num = {0}")
-        End If
+        Do
+            num = Console.ReadLine()
+            Pr = Pr * num
+        Loop Until num = 1
 
-        Console.WriteLine("Num * Num = {0}", result)
+        Console.WriteLine("Производная чисел={0}", Pr)
     End Sub
 End Module
