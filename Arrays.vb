@@ -9,32 +9,47 @@ Module Program
             input(i) = Console.ReadLine
         Next
 
-        print(input)
+        Dim num As Integer
 
-        'Console.WriteLine("Enter 5 strings")
+        Console.WriteLine("Какое число искать")
 
-        'Dim strings(4) As String
-        'For i = 0 To 4
-        'Strings(i) = Console.ReadLine
-        'Next
+        num = Console.ReadLine
 
-        'print(strings)
-
-        If Not input(0) = 21 Then
-            Console.WriteLine("Первый элемент это не 21")
-        End If
+        Console.WriteLine(find(input, num))
 
     End Sub
 
     Sub print(list As Integer())
+        For i = 0 To list.Length - 1
+            Console.WriteLine(list(i))
+        Next
+    End Sub
+    Sub print(list As String())
+        For i = 0 To list.Length - 1
+            Console.WriteLine(list(i))
+        Next
+    End Sub
+
+    Sub printReverse(list As Integer())
         For i = list.Length - 1 To 0 Step -1
             Console.WriteLine(list(i))
         Next
     End Sub
 
-    Sub print(list As String())
+    Sub printReverse(list As String())
         For i = list.Length - 1 To 0 Step -1
             Console.WriteLine(list(i))
         Next
     End Sub
+
+    Function find(list As Integer(), num As Integer) As Integer
+        For i = 0 To list.Length - 1
+            If list(i) = num Then
+                find = i
+                Exit Function
+            End If
+        Next
+        find = -1
+    End Function
+
 End Module
