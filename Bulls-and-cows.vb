@@ -2,9 +2,12 @@
 
 Module Program
     Sub Main(args As String())
-        Dim number As String = "1234"
+        Dim number As String
         Dim ver As String
+        Randomize()
+        number = Int((9000 * Rnd()) + 1000)
 
+        Console.WriteLine(number)
         Console.WriteLine(CheckDublicates(number))
 
         Do
@@ -25,10 +28,11 @@ Module Program
 
     Function CheckDublicates(num As String) As Boolean
         CheckDublicates = False
-        For m As Integer = 0 To 2
-            For i As Integer = m + 1 To 3
-                If num.Chars(m) = num.Chars(i) Then
+        For m As Integer = 1 To 3
+            For i As Integer = m To 3
+                If num.Chars(m - 1) = num.Chars(i) Then
                     CheckDublicates = True
+                    Exit Function
                 End If
             Next
         Next
