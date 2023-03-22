@@ -1,4 +1,5 @@
 ﻿Imports System
+Imports System.Runtime.Intrinsics
 
 Module Program
     Sub Main(args As String())
@@ -16,6 +17,22 @@ Module Program
         num = Console.ReadLine
 
         Console.WriteLine(find(input, num))
+
+        Dim min As Integer = input(0)
+        Dim max As Integer = input(0)
+
+        For i As Integer = 1 To input.Length - 1
+            If (input(i) < min) Then
+                min = input(i)
+            End If
+
+            If (input(i) > max) Then
+                max = input(i)
+            End If
+        Next
+
+        Console.WriteLine("Минимальное значение: {0}", min)
+        Console.WriteLine("Максимальное значение: {0}", max)
 
     End Sub
 
