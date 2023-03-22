@@ -40,7 +40,7 @@ Module Program
                     Hline(5, 5 * i + 8, 90)
                 Next
             Case 8 : Ledder(10, 10, 0, 0)
-            Case 9 : Chess()
+            Case 9 : ChessBoard(7, 10, 10)
 
         End Select
 
@@ -90,23 +90,15 @@ Module Program
         Next i
     End Sub
 
-    Sub Chess()
-        Dim size As Integer = 8 'размер доски
-        Dim cellSize As Integer = 3 'размер клетки
-        For row As Integer = 0 To size 'проходимся по строкам
-            For i As Integer = 0 To cellSize - 1
-                For column As Integer = 0 To size 'проходимся по столбцам
-                    For j As Integer = 0 To cellSize
-                        If (row + column) Mod 2 = 0 Then 'если сумма координат четная, то клетка будет белой
-                            Console.Write(brush)
-                            Console.ForegroundColor = ConsoleColor.White
-                        Else 'иначе клетка будет черной
-                            Console.ForegroundColor = ConsoleColor.Black
-                            Console.Write(brush)
-                        End If
-                    Next
-                Next
-                Console.WriteLine() 'переходим на новую строку
+    Sub ChessBoard(size As Byte, leftX As Byte, topY As Byte)
+        For i = 0 To size
+            For j = 0 To size
+                If (i + j) Mod 2 = 0 Then
+                    Console.ForegroundColor = ConsoleColor.Black
+                Else
+                    Console.ForegroundColor = ConsoleColor.White
+                End If
+                FilRect(leftX + j * 3, topY + i * 2, 3, 2)
             Next
         Next
     End Sub
